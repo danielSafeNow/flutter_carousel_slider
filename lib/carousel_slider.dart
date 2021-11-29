@@ -59,7 +59,7 @@ class CarouselSlider extends StatefulWidget {
   @override
   CarouselSliderState createState() => CarouselSliderState(_carouselController);
 
-  final Widget Function({Widget? child, double distortionValue, double itemOffset})? customCenterTransformBuilder;
+  final Transform Function({Widget? child, double distortionValue, double itemOffset})? customCenterTransformBuilder;
 }
 
 class CarouselSliderState extends State<CarouselSlider> with TickerProviderStateMixin {
@@ -292,7 +292,7 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
               distortionValue = Curves.easeOut.transform(distortionRatio as double);
 
               if (widget.options.enlargeStrategy == CenterPageEnlargeStrategy.custom) {
-                assert(widget.customCenterTransformBuilder != null, 'Always pass a customCenterTransofrmBuilder if setting CenterPageEnlargeStrategy.custom');
+                assert(widget.customCenterTransformBuilder != null, 'Always pass a customCenterTransformBuilder if setting CenterPageEnlargeStrategy.custom');
                 return getCenterWrapper(widget.customCenterTransformBuilder!(child: child, distortionValue: distortionValue, itemOffset: itemOffset));
               }
             }
